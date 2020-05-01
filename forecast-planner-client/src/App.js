@@ -5,15 +5,32 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import { Route } from 'react-router-dom';
 
-function App() {
-  return (
+class App extends React.Component {
+
+  state={
+    currentUser: null
+  }
+
+  setCurrentUser = user => {
+    this.setState({currentUser: user})
+  }
+
+  render() {
+    console.log(this.state.currentUser)
+    return (
     <div>
       <Navbar />
       <Route exact path="/" component={Home}/>
-      <Route exact path="/login" component={Login}/>
-      <Route exact path="/signup" component={Signup}/>
+      <Route exact path="/login" render={routerProps => 
+        <Login {...routerProps} setCurrentUser={this.setCurrentUser}/>}/>
+      <Route exact path="/signup" 
+        render={routerProps => 
+        <Signup {...routerProps} setCurrentUser={this.setCurrentUser}/>} 
+        />
     </div>
   );
+  }
+
 }
 
 export default App;
