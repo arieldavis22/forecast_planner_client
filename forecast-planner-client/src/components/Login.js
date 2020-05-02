@@ -17,18 +17,27 @@ class Login extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault()
+        
         fetch('http://localhost:3000/login', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: 'include',
             body: JSON.stringify(this.state)
         })
-        .then(r => r.json())
-        .then(user => {
-            this.props.setCurrentUser(user)
+        .then(r => {
+            if (r.ok) {
+                return r.json()
+            } else {
+                throw r
+            }
+        })
+        .then(response => {
+            this.props.setCurrentUser(response)
             this.setState(initialState)
         })
+        .catch(error => alert("Login unsuccessful. Sign up or try again."))
         
     }
 
