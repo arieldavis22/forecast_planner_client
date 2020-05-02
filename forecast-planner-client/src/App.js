@@ -3,6 +3,7 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import Login from './components/Login'
 import Signup from './components/Signup'
+import NewEventForm from './containers/NewEventForm'
 import { Route } from 'react-router-dom';
 
 class App extends React.Component {
@@ -27,6 +28,7 @@ class App extends React.Component {
         render={routerProps => 
         <Signup {...routerProps} setCurrentUser={this.setCurrentUser}/>} 
         />
+        <Route exact path="/new-event" component={NewEventForm}/>
     </div>
   );
   }

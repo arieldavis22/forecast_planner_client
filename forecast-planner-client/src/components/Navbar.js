@@ -7,17 +7,22 @@ const Navbar = () => {
             <NavLink
             to="/"
             exact
-            >Home</NavLink>
+            >Home </NavLink>
 
             <NavLink
             to="/login"
             exact
-            >Login</NavLink>
-            
+            >Login </NavLink>
+
             <NavLink
             to="/signup"
             exact
-            >SignUp</NavLink>
+            >SignUp </NavLink>
+
+            <NavLink
+            to="/new-event"
+            exact
+            >Create New Event </NavLink>
         </div>
     );
 }
