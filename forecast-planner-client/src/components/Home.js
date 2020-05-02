@@ -6,8 +6,11 @@ class Home extends Component {
     }
 
     render() { 
+        console.log(this.props)
         return (  
-            <p>Test</p>
+            <div>
+                <h1>Events</h1>
+            </div>
         );
     }
 }

@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 const Navbar = props => {
     const handleLogout = () => {
         fetch('http://localhost:3000/logout', {
+            method: "POST",
             credentials: 'include'
         })
         .then(r => r.json())
@@ -21,6 +22,7 @@ const Navbar = props => {
                 <Fragment>
                 <h1>{props.currentUser}</h1>
                 <button onClick={() => handleLogout()}>Log Out</button>
+                {/* <NavLink to="/new-event" exact>Create New Event</NavLink> */}
                 </Fragment>
             ) : (
                 <Fragment>

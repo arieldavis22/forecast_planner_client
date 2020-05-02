@@ -37,14 +37,19 @@ class App extends React.Component {
     return (
     <div>
       <Navbar currentUser={this.state.currentUser} logout={this.logout}/>
-      <Route exact path="/" component={Home}/>
+
+      {/* <Route exact path="/" render={routerProps => <Home {...routerProps} currentUser={this.state.currentUser} />}/> */}
+
       <Route exact path="/login" render={routerProps => 
-        <Login {...routerProps} setCurrentUser={this.setCurrentUser}/>}/>
+        <Login {...routerProps} setCurrentUser={this.setCurrentUser}/>}
+        />
+
       <Route exact path="/signup" 
         render={routerProps => 
         <Signup {...routerProps} setCurrentUser={this.setCurrentUser}/>} 
         />
-        <Route exact path="/new-event" component={NewEventForm}/>
+
+        {/* <Route exact path="/new-event" component={NewEventForm}/> */}
     </div>
   );
   }

@@ -1,12 +1,10 @@
 import React, {Fragment} from 'react';
-
-const initialState = {
-    name: "",
-    password: ""
-}
 class Login extends React.Component {
 
-    state=initialState
+    state = {
+        name: "",
+        password: ""
+    }
 
 
     handleChange = e => {
@@ -33,9 +31,9 @@ class Login extends React.Component {
                 throw r
             }
         })
-        .then(response => {
-            this.props.setCurrentUser(response)
-            this.setState(initialState)
+        .then(user => {
+            this.props.setCurrentUser(user)
+            // this.setState(initialState)
         })
         .catch(error => alert("Login unsuccessful. Sign up or try again."))
         
