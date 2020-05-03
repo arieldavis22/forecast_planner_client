@@ -38,7 +38,7 @@ class App extends React.Component {
     <div>
       <Navbar currentUser={this.state.currentUser} logout={this.logout}/>
 
-      {/* <Route exact path="/" render={routerProps => <Home {...routerProps} currentUser={this.state.currentUser} />}/> */}
+      <Route exact path="/" render={routerProps => <Home {...routerProps} currentUser={this.state.currentUser} />}/>
 
       <Route exact path="/login" render={routerProps => 
         <Login {...routerProps} setCurrentUser={this.setCurrentUser}/>}
@@ -49,7 +49,7 @@ class App extends React.Component {
         <Signup {...routerProps} setCurrentUser={this.setCurrentUser}/>} 
         />
 
-        {/* <Route exact path="/new-event" component={NewEventForm}/> */}
+        <Route exact path="/new-event" render={routerProps => <NewEventForm {...routerProps} currentUser={this.state.currentUser}/> } />
     </div>
   );
   }

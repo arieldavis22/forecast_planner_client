@@ -6,7 +6,8 @@ class NewEventForm extends Component {
         title:"",
         details:"",
         location:"",
-        date:""
+        date:"",
+        currentUser: this.props.currentUser
     }
 
     handleInputChange = event => {
@@ -28,7 +29,7 @@ class NewEventForm extends Component {
         .then(console.log)
     }
     render() { 
-        console.log(this.state)
+        console.log(this.state.currentUser)
         return (  
             <>
             <h1>Create New Event</h1>
