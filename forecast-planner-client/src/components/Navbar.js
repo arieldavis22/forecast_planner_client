@@ -22,7 +22,7 @@ const Navbar = props => {
                 <Fragment>
                 <h1>{props.currentUser}</h1>
                 <button onClick={() => handleLogout()}>Log Out</button>
-                <NavLink to="/new-event" exact>Create New Event</NavLink>
+                
                 </Fragment>
             ) : (
                 <Fragment>

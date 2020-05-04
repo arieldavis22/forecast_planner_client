@@ -36,7 +36,7 @@ class Login extends React.Component {
         .then(user => {
             this.props.setCurrentUser(user)
             this.setState(initialState)
-            window.history.pushState({status: "login"}, "", "/")
+            this.props.history.push("/")
         })
         .catch(error => alert("Login unsuccessful. Sign up or try again."))
         
