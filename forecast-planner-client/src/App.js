@@ -10,7 +10,8 @@ import { Route } from 'react-router-dom';
 class App extends React.Component {
 
   state={
-    currentUser: null
+    currentUser: null,
+    weatherApiRequest: []
   }
 
   componentDidMount = () => {
@@ -30,6 +31,10 @@ class App extends React.Component {
   }
 
   logout = () => this.setState({currentUser: null})
+
+  changeWeatherApiRequest = request => {
+
+  }
   
 
   render() {

@@ -7,12 +7,19 @@ class NewEventForm extends Component {
         details:"",
         location:"",
         date:"",
+        indoor: false,
         currentUser: this.props.currentUser
     }
 
     handleInputChange = event => {
         this.setState({
             [event.target.name]: event.target.value
+        })
+    }
+
+    handleCheckChange = () => {
+        this.setState({
+            indoor: !this.state.indoor
         })
     }
 
@@ -29,7 +36,7 @@ class NewEventForm extends Component {
         .then(console.log)
     }
     render() { 
-        console.log(this.state.currentUser)
+        console.log(this.state)
         return (  
             <>
             <h1>Create New Event</h1>
@@ -38,6 +45,7 @@ class NewEventForm extends Component {
                 <input type="textarea" name="details" onChange={this.handleInputChange} placeholder="Enter Event Details" />
                 <input type="text" name="location" onChange={this.handleInputChange} placeholder="City, State ex. Atlanta,GA" />
                 <input type="text" name="date" onChange={this.handleInputChange} placeholder="Enter Event Date ex. 05/01/2020" />
+                <input type="checkbox" name="indoor" onChange={this.handleCheckChange} />
                 <input type="submit" value="Submit" />
             </form>
             </>
