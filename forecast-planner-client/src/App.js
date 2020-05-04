@@ -1,4 +1,4 @@
-//small edit by Laura
+
 import React from 'react';
 import Home from './components/Home'
 import Navbar from './components/Navbar'
@@ -52,20 +52,7 @@ class App extends React.Component {
           <Route path="/new-event" render={routerProps => 
               <NewEventForm {...routerProps} currentUser={this.state.currentUser}/> } />
       </Switch>
-      
-      {/* <Route exact path="/" render={routerProps => <Home {...routerProps} currentUser={this.state.currentUser} />}/>
-
-      <Route exact path="/login" render={routerProps => 
-        <Login {...routerProps} setCurrentUser={this.setCurrentUser}/>}
-        />
-
-      <Route exact path="/signup" 
-        render={routerProps => 
-        <Signup {...routerProps} setCurrentUser={this.setCurrentUser}/>} 
-        />
-
-        <Route exact path="/new-event" render={routerProps => <NewEventForm {...routerProps} currentUser={this.state.currentUser}/> } /> */}
-    </div>
+      </div>
   );
   }
 
