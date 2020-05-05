@@ -1,10 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-<<<<<<< HEAD
 import { delEvent } from '../FetchData'
-=======
-import { Card, Button, Image } from 'semantic-ui-react'
->>>>>>> 48092352ae0a1e0299f3e4a50d08e8f9a60ed136
+import { Card, Button } from 'semantic-ui-react'
 
 
 
@@ -32,6 +29,7 @@ const Event = props => {
             <Card.Description>
                 {props.event.indoor ? "This is an indoor event" : "This is an outdoor event"}<br/>
                 <strong>Chance of precipitation: {props.event.precipitation_chance}%</strong><br/>
+                {!props.event.indoor && props.event.precipitation_chance > 30 ? <p>Rain may occur during your outdoor event</p> : null}
                 {props.event.precipitation_chance > 50 ? "Will probably rain" : "Will probably be sunny"}
                 </Card.Description>
                 <div >
