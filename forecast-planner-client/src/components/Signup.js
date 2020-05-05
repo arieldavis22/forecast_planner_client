@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import {Redirect} from 'react-router-dom'
+import { signUp } from '../FetchData'
 
 class Signup extends React.Component {
 
@@ -20,14 +21,7 @@ class Signup extends React.Component {
         if(this.state.password !== this.state.passwordConfirmation){
             return alert("Please enter matching passwords")
         }
-        fetch('http://localhost:3000/signup', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: 'include',
-            body: JSON.stringify(this.state)
-        })
+        signUp(this.state)
         .then(r => r.json())
         .then(user => {
             this.props.setCurrentUser(user)

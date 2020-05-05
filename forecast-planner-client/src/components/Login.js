@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import {Redirect} from 'react-router-dom'
+import { login } from '../FetchData'
 
 class Login extends React.Component {
 
@@ -16,15 +17,7 @@ class Login extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        
-        fetch('http://localhost:3000/login', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: 'include',
-            body: JSON.stringify(this.state)
-        })
+        login(this.state)
         .then(r => {
             if (r.ok) {
                 return r.json()

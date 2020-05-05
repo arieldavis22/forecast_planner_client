@@ -8,6 +8,7 @@ import NewEventForm from './containers/NewEventForm'
 import FriendList from './containers/FriendList'
 import EditEventForm from './components/EditEventForm'
 import { Route, Switch, withRouter } from 'react-router-dom';
+import { autoLog, allUsers, getEvents } from "./FetchData"
 
 class App extends React.Component {
 
@@ -20,9 +21,7 @@ class App extends React.Component {
 
   componentDidMount = () => {
     //auto login
-    fetch('http://localhost:3000/autologin', {
-      credentials: 'include'
-    })
+    autoLog()
     .then(r => r.json())
     .then(response => {
       if (!response.error) {
@@ -32,7 +31,7 @@ class App extends React.Component {
     })
 
     //all users
-    fetch('http://localhost:3000/users')
+    allUsers()
     .then(r => {
       if(r.ok) {
           return r.json()
@@ -60,16 +59,7 @@ class App extends React.Component {
   }
 
   fetchEventsAndSetState = () => {
-    fetch("http://localhost:3000/getevents", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            currentUser: this.state.currentUser
-            //refactor, just use session[:id]
-        })
-    })
+    getEvents(this.state.currentUser)
     .then(r => {
         if(r.ok) {
             return r.json()

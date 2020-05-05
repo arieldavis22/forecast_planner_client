@@ -1,16 +1,14 @@
 import React, { Component} from 'react';
 import { NavLink } from 'react-router-dom';
-import { Input, Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
+import { logout } from '../FetchData'
 
 
 export default class Navbar extends Component {
     state = { activeItem: 'home' }
 
     handleLogout = () => {
-        fetch('http://localhost:3000/logout', {
-            method: "POST",
-            credentials: 'include'
-        })
+        logout()
         .then(r => r.json())
         .then(() => {
             this.props.logout()
