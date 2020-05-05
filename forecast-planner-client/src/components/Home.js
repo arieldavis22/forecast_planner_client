@@ -12,7 +12,7 @@ class Home extends Component {
 
     renderEvents = () => {
             return this.props.userEvents.map(event =>
-                <Event key={event.id} event={event}/>
+                <Event key={event.id} event={event} update={this.props.updateEvents}/>
             )
     }
 

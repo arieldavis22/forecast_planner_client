@@ -1,15 +1,20 @@
 import React, {Fragment} from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 
 const Navbar = props => {
+    const history = useHistory()
+
     const handleLogout = () => {
         fetch('http://localhost:3000/logout', {
             method: "POST",
             credentials: 'include'
         })
         .then(r => r.json())
-        .then(props.logout())
+        .then(() => {
+            props.logout()
+            history.push("/")
+        })
     }
 
     return (  
