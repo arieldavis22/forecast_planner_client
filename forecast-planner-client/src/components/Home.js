@@ -1,6 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Event from './Event'
 import { NavLink } from 'react-router-dom';
+import { Card } from 'semantic-ui-react';
 
 class Home extends Component {
     
@@ -18,18 +19,22 @@ class Home extends Component {
 
     render() { 
         return (  
-            <div>
+            <div className='home'>
                 {this.props.currentUser ? 
-                    <Fragment>
-                        <NavLink to="/new-event" exact>Create New Event</NavLink>
-                        <h1>Events</h1>
-                        {this.renderEvents()}
-                    </Fragment>
+                    <>
+                        <div className='side'><NavLink to="/new-event" exact>Create New Event</NavLink></div>
+                        <div className='main-panel'>
+                            <h1>Events</h1>
+                            <Card.Group>{this.renderEvents()}</Card.Group>
+                        
+                        </div>
+                        
+                    </>
                 :
-                <Fragment>
+                <div className='main-panel'>
                     <h1>Welcome to Forecast Planner!</h1>
                     <h4>Log in or Sign up</h4>
-                </Fragment>
+                </div>
                 }
                 
             </div>

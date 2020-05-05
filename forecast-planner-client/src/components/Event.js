@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Card, Button, Image } from 'semantic-ui-react'
 
 
 
@@ -20,16 +21,27 @@ const Event = props => {
 
     }
     return (  
-        <div>
-            <h1>{props.event.title} {props.event.date}</h1>
-            <h2>{props.event.details}</h2>
-            <h3>{props.event.location.replace(",", ", ")}</h3>
-            <h3>{props.event.indoor ? "This is an indoor event" : "This is an outdoor event"}</h3>
-            <h4>Chance of precipitation: {props.event.precipitation_chance}%</h4>
-            <h4>{props.event.precipitation_chance > 50 ? "Will probably rain" : "Will probably be sunny"}</h4>
-            <NavLink to={`/edit/${props.event.id}`}>Edit</NavLink>
-            <button onClick={deleteEvent}>Delete Event</button>
-        </div>
+        <Card>
+            <Card.Description as='h2'>{props.event.title} </Card.Description>
+            <Card.Meta>{props.event.details}</Card.Meta>
+            <Card.Description as='h4'>
+                {props.event.date}<br/>
+                {props.event.location.replace(",", ", ")}
+            </Card.Description>
+            {/* <Card.Header as='h4'>{props.event.location.replace(",", ", ")}</Card.Header> */}
+            
+            
+            <Card.Description>
+                {props.event.indoor ? "This is an indoor event" : "This is an outdoor event"}<br/>
+                <strong>Chance of precipitation: {props.event.precipitation_chance}%</strong><br/>
+                {props.event.precipitation_chance > 50 ? "Will probably rain" : "Will probably be sunny"}
+                </Card.Description>
+                <div >
+                    <Button as={NavLink} to={`/edit/${props.event.id}`} floated='left'>Edit</Button>
+                    <Button onClick={deleteEvent} color='red' floated='right' size='mini'>X</Button>
+                </div>
+            
+        </Card>
     );
 }
 
