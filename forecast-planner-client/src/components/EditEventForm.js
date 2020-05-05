@@ -1,9 +1,7 @@
 import React from 'react'
+import {Redirect} from 'react-router-dom'
 
-//autofill form with App's state info match.params.id
-//setState to form info
-//fetch POST event/:id
-// () => 
+
 const initialState = {
     title:"",
     details:"",
@@ -17,13 +15,16 @@ class EditEventForm extends React.Component {
 
     componentDidMount() {
         let event = this.props.events.find(event => event.id.toString() === this.props.match.params.id)
-        this.setState({
+        if (event) {
+            this.setState({
             title: event.title,
             details: event.details,
             location: event.location,
             date: event.date,
             indoor: event.indoor
         })
+        }
+        
     }
 
     handleInputChange = event => {
@@ -65,6 +66,8 @@ class EditEventForm extends React.Component {
 
     render() {
     return(
+        <>
+        { !this.props.currentUser ? <Redirect to="/" /> : null }
         <form onSubmit={this.handleSubmit}>
             <input type="text" name="title" onChange={this.handleInputChange} value={this.state.title} placeholder="Enter Event Title" />
             <input type="textarea" name="details" onChange={this.handleInputChange} value={this.state.details} placeholder="Enter Event Details" />
@@ -73,6 +76,7 @@ class EditEventForm extends React.Component {
             <input type="checkbox" name="indoor" onChange={this.handleCheckChange} value={this.state.indoor} />
             <input type="submit" value="Submit" />
         </form>
+        </>
     )
     }
 }

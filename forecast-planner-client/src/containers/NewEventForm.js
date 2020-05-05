@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom'
 
 class NewEventForm extends Component {
     state = {  
@@ -41,6 +42,7 @@ class NewEventForm extends Component {
     render() { 
         return (  
             <>
+            { !this.props.currentUser ? <Redirect to="/" /> : null }
             <h1>Create New Event</h1>
             <form onSubmit={this.handleFormSubmit}>
                 <input type="text" name="title" onChange={this.handleInputChange} placeholder="Enter Event Title" />

@@ -1,4 +1,6 @@
 import React, {Fragment} from 'react';
+import {Redirect} from 'react-router-dom'
+
 const initialState = {
     name: "",
     password: "",
@@ -38,6 +40,7 @@ class Signup extends React.Component {
     render() {
     return (  
         <Fragment>
+            { this.props.currentUser ? <Redirect to="/"/> : null }
             <h1>Signup</h1>
             <form onSubmit={this.handleSubmit}>
                 <input type="text" 

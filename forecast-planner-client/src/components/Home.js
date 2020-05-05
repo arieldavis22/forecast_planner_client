@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Event from './Event'
 import { NavLink } from 'react-router-dom';
 
@@ -11,19 +11,27 @@ class Home extends Component {
     // }
 
     renderEvents = () => {
-        if(this.props.currentUser !== null) {
             return this.props.userEvents.map(event =>
                 <Event key={event.id} event={event}/>
             )
-        }
     }
 
     render() { 
         return (  
             <div>
-                <NavLink to="/new-event" exact>Create New Event</NavLink>
-                <h1>Events</h1>
-                {this.renderEvents()}
+                {this.props.currentUser ? 
+                    <Fragment>
+                        <NavLink to="/new-event" exact>Create New Event</NavLink>
+                        <h1>Events</h1>
+                        {this.renderEvents()}
+                    </Fragment>
+                :
+                <Fragment>
+                    <h1>Welcome to Forecast Planner!</h1>
+                    <h4>Log in or Sign up</h4>
+                </Fragment>
+                }
+                
             </div>
         );
     }

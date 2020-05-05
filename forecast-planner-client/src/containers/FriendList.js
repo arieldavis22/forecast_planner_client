@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import User from '../components/User';
 import Friend from '../components/Friend';
+import { Redirect } from 'react-router-dom';
 
 class FriendList extends Component {
     state = {  
@@ -33,7 +34,11 @@ class FriendList extends Component {
     }
 
     componentDidMount() {
-        this.fetchFriends()
+        if (this.props.currentUser) {
+            this.fetchFriends()
+        } else {
+            return <Redirect to="/"/>
+        }
     }
 
     handleFriendClick = (friend) => {
@@ -57,6 +62,8 @@ class FriendList extends Component {
         return this.props.allUsers.map(user =>{
             if(user.name !== this.props.currentUser && !this.state.userFriends.includes(user.name)) {
                 return <User key={user.name} user={user} handleFriendClick={this.handleFriendClick}/>
+                } else {
+                    return null
                 }
             }
         )

@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import {Redirect} from 'react-router-dom'
 
 const initialState = {
     name: "",
@@ -35,7 +36,7 @@ class Login extends React.Component {
         })
         .then(user => {
             this.props.setCurrentUser(user)
-            this.setState(initialState)
+            this.props.updateEvents()
             this.props.history.push("/")
         })
         .catch(error => alert("Login unsuccessful. Sign up or try again."))
@@ -46,6 +47,7 @@ class Login extends React.Component {
     render() {
         return (  
         <Fragment>
+            { this.props.currentUser ? <Redirect to="/"/> : null}
             <h1>Login</h1>
             <form onSubmit={this.handleSubmit}>
                 <input type="text" 

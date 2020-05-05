@@ -7,7 +7,7 @@ import Signup from './components/Signup'
 import NewEventForm from './containers/NewEventForm'
 import FriendList from './containers/FriendList'
 import EditEventForm from './components/EditEventForm'
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 
 class App extends React.Component {
 
@@ -52,7 +52,14 @@ class App extends React.Component {
     this.setState({currentUser: user.name})
   }
 
-  logout = () => this.setState({currentUser: null})
+  logout = () => {
+    this.setState({
+      currentUser: null,
+      allUsers: [],
+      userEvents: []
+    })
+    return <Redirect to="/" />
+  }
 
   fetchEventsAndSetState = () => {
     fetch("http://localhost:3000/getevents", {
@@ -93,9 +100,9 @@ class App extends React.Component {
           <Route exact path="/" render={routerProps => 
             <Home {...routerProps} currentUser={this.state.currentUser} userEvents={this.state.userEvents}/> } />
           <Route path="/login" render={routerProps => 
-            <Login {...routerProps} setCurrentUser={this.setCurrentUser}/>} />
+            <Login {...routerProps} setCurrentUser={this.setCurrentUser} currentUser={this.state.currentUser} updateEvents={this.fetchEventsAndSetState}/>} />
           <Route path="/signup" render={routerProps => 
-            <Signup {...routerProps} setCurrentUser={this.setCurrentUser}/>} />
+            <Signup {...routerProps} setCurrentUser={this.setCurrentUser} currentUser={this.state.currentUser}/>} />
           <Route path="/new-event" render={routerProps => 
             <NewEventForm {...routerProps} currentUser={this.state.currentUser} updateEvents={this.fetchEventsAndSetState}/> } />
           <Route path="/edit/:id" render={routerProps => 
