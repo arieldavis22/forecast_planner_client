@@ -93,7 +93,7 @@ class App extends React.Component {
   render() {
     return (
     <div>
-      <Navbar currentUser={this.state.currentUser} logout={this.logout}/>
+      <Route path="/" render={routerProps => <Navbar {...routerProps} currentUser={this.state.currentUser} logout={this.logout}/>} />
       <Switch>
           <Route exact path="/" render={routerProps => 
             <Home 
