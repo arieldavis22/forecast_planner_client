@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { NavLink } from 'react-router-dom';
-import { Input, Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 
 
 export default class Navbar extends Component {
