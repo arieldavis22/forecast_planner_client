@@ -26,7 +26,7 @@ const Event = props => {
             <Card.Description>
                 {props.event.indoor ? "This is an indoor event" : "This is an outdoor event"}<br/>
                 <strong>Chance of precipitation: {props.event.precipitation_chance}%</strong><br/>
-                {!props.event.indoor && props.event.precipitation_chance > 30 ? <p>Rain may occur during your outdoor event</p> : null}
+                {!props.event.indoor && props.event.precipitation_chance > 30 ? <p style={{color: "red"}}>Rain may occur during your outdoor event</p> : null}
                 {props.event.precipitation_chance > 50 ? "Will probably rain" : "Will probably be sunny"}
             </Card.Description>
                 <div >

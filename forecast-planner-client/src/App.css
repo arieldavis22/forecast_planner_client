@@ -37,6 +37,6 @@
   }
 }
 
-.warning {
+.ui.cards>.card.badweather {
   color: red;
 }
