@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.home {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.side {
+  width: 30%;
+  /* create more space or "centered" vertical effect */
+}
+
+.main-panel {
+  width: 70%;
+}
