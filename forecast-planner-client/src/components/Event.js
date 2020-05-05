@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 
 
@@ -15,10 +15,10 @@ const Event = props => {
         })
         .then(r => r.json)
         .then( response => {
-            this.props.history.push("/");
-            this.props.updateEvents()
+            return <Redirect to="/" />
+            //can't get events to update from here
         })
-        //then redirect and update events
+
     }
     return (  
         <div>
