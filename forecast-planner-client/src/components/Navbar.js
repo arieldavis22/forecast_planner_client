@@ -22,12 +22,8 @@ const Navbar = props => {
                 <Fragment>
                 <h1>{props.currentUser}</h1>
                 <button onClick={() => handleLogout()}>Log Out</button>
-<<<<<<< HEAD
                 <NavLink to="/new-event" exact>Create New Event</NavLink>
                 <NavLink to="/friends" exact>Friends List</NavLink>
-=======
-                
->>>>>>> 81e4597343a7058277a57a6e0cf9d3332c93af47
                 </Fragment>
             ) : (
                 <Fragment>

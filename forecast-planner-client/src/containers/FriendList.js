@@ -7,7 +7,7 @@ class FriendList extends Component {
         userFriends: []
     }
 
-    componentDidMount() {
+    fetchFriends = () => {
         fetch('http://localhost:3000/seefriends', {
             method: "POST",
             headers: {
@@ -32,6 +32,10 @@ class FriendList extends Component {
         .catch(error => console.log(error))
     }
 
+    componentDidMount() {
+        this.fetchFriends()
+    }
+
     handleFriendClick = (friend) => {
         fetch('http://localhost:3000/addfriend', {
             method: "POST",
@@ -44,12 +48,14 @@ class FriendList extends Component {
             })
         })
         .then(r => r.json())
-        .then(console.log)
+        .then(() => {
+            this.fetchFriends()
+        })
     }
 
     renderUsers = () => {
         return this.props.allUsers.map(user =>{
-            if(user.name !== this.props.currentUser) {
+            if(user.name !== this.props.currentUser && !this.state.userFriends.includes(user.name)) {
                 return <User key={user.name} user={user} handleFriendClick={this.handleFriendClick}/>
                 }
             }
