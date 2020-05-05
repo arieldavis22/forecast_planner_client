@@ -1,12 +1,13 @@
 import React from 'react';
+import {Card, Button} from 'semantic-ui-react'
 
 const User = (props) => {
     const friend = props.user.name
     return (  
-        <div>
-            <p>{friend}</p>
-            <button onClick={() => props.handleFriendClick(friend)}>Friend!</button>
-        </div>
+        <Card>
+            <Card.Header>{friend}</Card.Header>
+            <Button float='right' color='#264D59' onClick={() => props.handleFriendClick(friend)}>Friend!</Button>
+        </Card>
     );
 }
 
