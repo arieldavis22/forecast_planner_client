@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom'
+import { createEvent } from '../FetchData'
 
 class NewEventForm extends Component {
     state = {  
@@ -26,15 +27,9 @@ class NewEventForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault()
-        fetch("http://localhost:3000/events", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(this.state)
-        })
+        createEvent(this.state)
         .then(r=>r.json())
-        .then( () => {
+        .then(() => {
             this.props.history.push("/");
             this.props.updateEvents()
         })

@@ -1,5 +1,6 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
+import { editEvent } from '../FetchData'
 
 class EditEventForm extends React.Component {
     state = {
@@ -38,14 +39,7 @@ class EditEventForm extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        fetch(`http://localhost:3000/events/${this.props.match.params.id}`, {
-            method: 'PUT',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: 'include',
-            body: JSON.stringify(this.state)
-        })
+        editEvent(this.props.match.params.id, this.state)
         .then(r => {
             if (r.ok) {
                 return r.json()

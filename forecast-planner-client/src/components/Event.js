@@ -1,19 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+<<<<<<< HEAD
+import { delEvent } from '../FetchData'
+=======
 import { Card, Button, Image } from 'semantic-ui-react'
+>>>>>>> 48092352ae0a1e0299f3e4a50d08e8f9a60ed136
 
 
 
 const Event = props => {
     
     const deleteEvent = () => {
-        //fetch delete
-        fetch(`http://localhost:3000/events/${props.event.id}`, {
-            method: 'DELETE',
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+        delEvent(props.event.id)
         .then(r => r.json)
         .then(() => {
             props.update()
