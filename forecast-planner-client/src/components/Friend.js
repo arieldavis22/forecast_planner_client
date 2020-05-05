@@ -1,10 +1,11 @@
 import React from 'react';
+import {Card} from 'semantic-ui-react'
 
 const Friend = (props) => {
     return (  
-        <div>
-            {props.friend}
-        </div>
+        <Card>
+            <Card.Header as='h3'>{props.friend}</Card.Header>
+        </Card>
     );
 }
 

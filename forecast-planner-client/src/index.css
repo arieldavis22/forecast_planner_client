@@ -26,3 +26,8 @@ code {
 .main-panel {
   width: 70%;
 }
+
+.ui.button.dark-blue {
+  background-color: #264D59;
+  color: white
+}

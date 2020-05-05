@@ -3,6 +3,7 @@ import User from '../components/User';
 import Friend from '../components/Friend';
 import { Redirect } from 'react-router-dom';
 import { seeFriends, addFriends } from '../FetchData';
+import { Card } from 'semantic-ui-react'
 
 class FriendList extends Component {
     state = {  
@@ -27,11 +28,8 @@ class FriendList extends Component {
     }
 
     componentDidMount() {
-        if (this.props.currentUser) {
-            this.fetchFriends()
-        } else {
+        this.fetchFriends()
             return <Redirect to="/"/>
-        }
     }
 
     handleFriendClick = (friend) => {
@@ -60,13 +58,20 @@ class FriendList extends Component {
     }
 
     render() { 
-        return (  
-            <div>
+        return (
+            <>
+            { !this.props.currentUser ? <Redirect to="/"/> : null }
+            <div className='home'>
+                <div className='side'></div>
+                <div className='main-panel'>
                 <h1>Friend List</h1>
-                {this.renderFriends()}
+                <Card.Group itemsPerRow={4}>{this.renderFriends()}</Card.Group>
                 <h1>All Users</h1>
-                {this.renderUsers()}
+                <Card.Group itemsPerRow={4}>{this.renderUsers()}</Card.Group>
+                </div>
             </div>
+            </>
+            
         );
     }
 }
