@@ -85,11 +85,6 @@ class App extends React.Component {
     .catch(error => console.log(error))
 }
 
-  changeWeatherApiRequest = request => {
-
-  }
-  
-
   render() {
     return (
     <div>

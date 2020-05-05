@@ -1,17 +1,14 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
 
-
-const initialState = {
-    title:"",
-    details:"",
-    location:"",
-    date:"",
-    indoor: false,
-}
-
 class EditEventForm extends React.Component {
-    state = initialState
+    state = {
+        title:"",
+        details:"",
+        location:"",
+        date:"",
+        indoor: false
+    }
 
     componentDidMount() {
         let event = this.props.events.find(event => event.id.toString() === this.props.match.params.id)
@@ -55,8 +52,7 @@ class EditEventForm extends React.Component {
             } else {
                 throw r
             }})
-        .then( response => {
-            this.setState(initialState);
+        .then( () => {
             this.props.history.push("/");
             this.props.updateEvents()
         })

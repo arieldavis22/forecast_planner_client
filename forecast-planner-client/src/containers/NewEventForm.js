@@ -34,7 +34,7 @@ class NewEventForm extends Component {
             body: JSON.stringify(this.state)
         })
         .then(r=>r.json())
-        .then( response => {
+        .then( () => {
             this.props.history.push("/");
             this.props.updateEvents()
         })

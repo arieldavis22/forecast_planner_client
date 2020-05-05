@@ -1,14 +1,12 @@
 import React, {Fragment} from 'react';
 import {Redirect} from 'react-router-dom'
 
-const initialState = {
-    name: "",
-    password: ""
-}
 class Login extends React.Component {
 
-    state = initialState
-
+    state = {
+        name: "",
+        password: ""
+    }
 
     handleChange = e => {
         this.setState({
@@ -39,7 +37,7 @@ class Login extends React.Component {
             this.props.updateEvents()
             this.props.history.push("/")
         })
-        .catch(error => alert("Login unsuccessful. Sign up or try again."))
+        .catch(() => alert("Login unsuccessful. Sign up or try again."))
         
     }
 
@@ -50,10 +48,12 @@ class Login extends React.Component {
             { this.props.currentUser ? <Redirect to="/"/> : null}
             <h1>Login</h1>
             <form onSubmit={this.handleSubmit}>
+                <label htmlFor="name">Username:</label>
                 <input type="text" 
                     name="name" 
                     value={this.state.name} 
                     onChange={this.handleChange}/>
+                <label htmlFor="password">Password:</label>
                 <input type="password" 
                     name="password" 
                     value={this.state.password} 

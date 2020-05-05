@@ -1,14 +1,13 @@
 import React, {Fragment} from 'react';
 import {Redirect} from 'react-router-dom'
 
-const initialState = {
-    name: "",
-    password: "",
-    passwordConfirmation: "",
-}
 class Signup extends React.Component {
 
-    state=initialState
+    state= {
+        name: "",
+        password: "",
+        passwordConfirmation: ""
+    }
 
     handleChange = e => {
         this.setState({
@@ -32,7 +31,6 @@ class Signup extends React.Component {
         .then(r => r.json())
         .then(user => {
             this.props.setCurrentUser(user)
-            this.setState(initialState)
         })
         
     }
@@ -43,14 +41,17 @@ class Signup extends React.Component {
             { this.props.currentUser ? <Redirect to="/"/> : null }
             <h1>Signup</h1>
             <form onSubmit={this.handleSubmit}>
+                <label htmlFor="name">Username:</label>
                 <input type="text" 
                     name="name" 
                     value={this.state.name} 
                     onChange={this.handleChange}/>
+                <label htmlFor="password">Password:</label>
                 <input type="password" 
                     name="password" 
                     value={this.state.password} 
                     onChange={this.handleChange}/>
+                <label htmlFor="passwordComfirmation">Confirm Password:</label>
                 <input type="password" 
                     name="passwordConfirmation" 
                     value={this.state.passwordConfirmation} 

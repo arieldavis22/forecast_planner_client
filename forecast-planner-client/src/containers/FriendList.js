@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import User from '../components/User';
 import Friend from '../components/Friend';
 import { Redirect } from 'react-router-dom';
+import { seeFriends, addFriends } from '../FetchData';
 
 class FriendList extends Component {
     state = {  
@@ -9,15 +10,7 @@ class FriendList extends Component {
     }
 
     fetchFriends = () => {
-        fetch('http://localhost:3000/seefriends', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                currentUser: this.props.currentUser
-            })
-        })
+        seeFriends(this.props.currentUser)
         .then(r => {
             if(r.ok) {
                 return r.json()
@@ -42,16 +35,7 @@ class FriendList extends Component {
     }
 
     handleFriendClick = (friend) => {
-        fetch('http://localhost:3000/addfriend', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                currentUser: this.props.currentUser,
-                friend: friend
-            })
-        })
+        addFriends(this.props.currentUser, friend)
         .then(r => r.json())
         .then(() => {
             this.fetchFriends()
