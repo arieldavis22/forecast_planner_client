@@ -1,26 +1,16 @@
 import React from 'react';
+import { Card } from 'semantic-ui-react'
 import rain from '../rain.jpg';
 import sun from '../sun.jpg';
-import { NavLink } from 'react-router-dom';
-import { delEvent } from '../FetchData'
-import { Card, Button } from 'semantic-ui-react'
 
 
-
-const Event = props => {
+const FriendEvent = props => {
     
-    const deleteEvent = () => {
-        delEvent(props.event.id)
-        .then(r => r.json)
-        .then(() => {
-            props.update()
-        })
-    }
 
     return (  
         <Card className='weather'
-            style={ props.event.precipitation_chance > 50 ? {backgroundImage: `url(${rain})`} : {backgroundImage: `url(${sun})`} }>
-            <Card.Description as='h2'>{props.event.title} </Card.Description>
+        style={ props.event.precipitation_chance > 50 ? {backgroundImage: `url(${rain})`} : {backgroundImage: `url(${sun})`} }>
+            <Card.Description as='h2'>{props.name}'s Event: <br/>{props.event.title} </Card.Description>
             <Card.Meta>{props.event.details}</Card.Meta>
             <Card.Description as='h4'>
                 {props.event.date}<br/>
@@ -32,13 +22,9 @@ const Event = props => {
                 {!props.event.indoor && props.event.precipitation_chance > 30 ? <p style={{color: "red"}}>Rain may occur during your outdoor event</p> : null}
                 {props.event.precipitation_chance > 50 ? "Will probably rain" : "Will probably be sunny"}
             </Card.Description>
-                <div >
-                    <Button as={NavLink} to={`/edit/${props.event.id}`} floated='left'>Edit</Button>
-                    <Button onClick={deleteEvent} color='red' floated='right' size='mini'>X</Button>
-                </div>
             
         </Card>
     );
 }
 
-export default Event;
+export default FriendEvent;

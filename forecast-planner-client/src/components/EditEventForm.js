@@ -56,7 +56,7 @@ class EditEventForm extends React.Component {
 
     render() {
     return(
-        <>
+        <div className='pad'>
         { !this.props.currentUser ? <Redirect to="/" /> : null }
         <form onSubmit={this.handleSubmit}>
             <input type="text" name="title" onChange={this.handleInputChange} value={this.state.title} placeholder="Enter Event Title" />
@@ -66,7 +66,7 @@ class EditEventForm extends React.Component {
             <input type="checkbox" name="indoor" onChange={this.handleCheckChange} value={this.state.indoor} />
             <input type="submit" value="Submit" />
         </form>
-        </>
+        </div>
     )
     }
 }

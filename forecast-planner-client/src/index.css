@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+div.pad {
+  padding: 15px;
+}
+
 .home {
   width: 100%;
   display: flex;
@@ -31,3 +35,33 @@ code {
   background-color: #264D59;
   color: white
 }
+
+div.ui.card.weather {
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1em
+}
+
+div.ui.secondary.menu {
+  background-color: #264D59;
+  height: 85px;
+  padding: 10px
+}
+div.ui.secondary.menu a.item {
+  background-color: #F9E07F;
+}
+div.ui.secondary.menu a.item:hover, 
+div.ui.secondary.menu a.active.item:hover {
+  background-color: rgb(207, 144, 88);
+}
+div.ui.secondary.menu a.active.item {
+  background-color: #F9AD6A;
+}
+
+img.ui.image.logo {
+  width: 306px;
+  height: 54px;
+  margin: 8px 20px 8px 8px;
+}
+
+

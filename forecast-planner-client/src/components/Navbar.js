@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
+import logo from '../forecast_planner.jpg';
 import { NavLink } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react'
+import { Menu, Image } from 'semantic-ui-react'
 import { logout } from '../FetchData'
 
 
@@ -28,6 +29,10 @@ export default class Navbar extends Component {
 
         return (  
             <Menu secondary>
+                <Image
+                src={logo}
+                alt="forecast planner logo"
+                className='logo'/>
                 <Menu.Item
                 name='home'
                 active={activeItem === 'home'}

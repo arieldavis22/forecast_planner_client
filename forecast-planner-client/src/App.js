@@ -16,7 +16,8 @@ class App extends React.Component {
     currentUser: null,
     weatherApiRequest: [],
     allUsers: [],
-    userEvents: []
+    userEvents: [],
+    friendEvents: []
   }
 
   componentDidMount = () => {
@@ -54,7 +55,8 @@ class App extends React.Component {
   logout = () => {
     this.setState({
       currentUser: null,
-      userEvents: []
+      userEvents: [],
+      friendEvents: []
     })
   }
 
@@ -69,7 +71,8 @@ class App extends React.Component {
     })
     .then(data => {
         this.setState({
-            userEvents: data.events
+            userEvents: data.events,
+            friendEvents: data.friend_events
         })
     })
     .catch(error => console.log(error))
@@ -85,6 +88,7 @@ class App extends React.Component {
             {...routerProps} 
             currentUser={this.state.currentUser} 
             userEvents={this.state.userEvents}
+            friendEvents={this.state.friendEvents}
             updateEvents={this.fetchEventsAndSetState}/> } 
             />
 
