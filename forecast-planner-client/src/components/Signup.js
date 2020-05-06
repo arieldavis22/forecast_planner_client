@@ -25,6 +25,7 @@ class Signup extends React.Component {
         .then(r => r.json())
         .then(user => {
             this.props.setCurrentUser(user)
+            this.props.fetchAllUsers()
         })
         
     }

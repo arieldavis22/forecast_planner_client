@@ -37,6 +37,7 @@ class FriendList extends Component {
         .then(r => r.json())
         .then(() => {
             this.fetchFriends()
+            this.props.updateEvents()
         })
     }
 

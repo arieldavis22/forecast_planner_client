@@ -28,11 +28,18 @@ class NewEventForm extends Component {
     handleFormSubmit = event => {
         event.preventDefault()
         createEvent(this.state)
-        .then(r=>r.json())
+        .then(r=> {
+            if(r.ok) {
+                return r.json()
+            } else {
+                throw r
+            }
+        })
         .then(() => {
             this.props.history.push("/");
             this.props.updateEvents()
         })
+        .catch(() => alert("Information Entered Incorrectly or Weather Info Not Found"))
     }
     render() { 
         return (  
