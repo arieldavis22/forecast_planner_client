@@ -10,26 +10,17 @@ class Home extends Component {
             return this.props.userEvents.map(event =>
                 <Event key={event.id} event={event} update={this.props.updateEvents}/>
             )
-    }
+    }      
 
     renderFriendEvents = () => {
-        const frEvents= this.props.friendEvents
-        const frEventArr = []
-        for (let i = 0; i < frEvents.length; i++) {
-            console.log("i: ", i)
-            for (let innerI= 0; innerI < frEvents[i].events.length; innerI++) {
-                console.log("innerI: ", innerI)
-                frEventArr.push(<FriendEvent 
-                    name={frEvents[i].name} 
-                    key={frEvents[i].events[innerI].id} 
-                    event={frEvents[i].events[innerI]}
-                    />)
-            }
-        }
-        // return this.props.friendEvents.map( obj => (obj.events.map( event => {
-        //     <FriendEvent name={obj.name} key={event.id} event={event} />
-        // })))
-        return frEventArr;
+        const frEvents = this.props.friendEvents
+        return frEvents.map( obj => 
+            <FriendEvent
+                name={obj.name}
+                key={obj.event.id}
+                event={obj.event}
+                />
+        )
     }
 
 
