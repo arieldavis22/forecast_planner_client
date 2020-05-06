@@ -20,6 +20,24 @@ class App extends React.Component {
     friendEvents: []
   }
 
+  fetchAllUsers = () => {
+        //all users
+        allUsers()
+        .then(r => {
+          if(r.ok) {
+              return r.json()
+          } else {
+              throw r
+          }
+      })
+        .then(data => {
+          this.setState({
+            allUsers: data
+          })
+        })
+        .catch(error => console.log(error))
+  }
+
   componentDidMount = () => {
     //auto login
     autoLog()
@@ -31,21 +49,8 @@ class App extends React.Component {
       }
     })
 
-    //all users
-    allUsers()
-    .then(r => {
-      if(r.ok) {
-          return r.json()
-      } else {
-          throw r
-      }
-  })
-    .then(data => {
-      this.setState({
-        allUsers: data
-      })
-    })
-    .catch(error => console.log(error))
+    this.fetchAllUsers()
+
   }
 
   setCurrentUser = user => {
@@ -97,14 +102,16 @@ class App extends React.Component {
             {...routerProps} 
             setCurrentUser={this.setCurrentUser} 
             currentUser={this.state.currentUser} 
-            updateEvents={this.fetchEventsAndSetState}/>} 
+            updateEvents={this.fetchEventsAndSetState}
+            fetchAllUsers={this.fetchAllUsers}/>} 
             />
 
           <Route path="/signup" render={routerProps => 
             <Signup 
             {...routerProps} 
             setCurrentUser={this.setCurrentUser} 
-            currentUser={this.state.currentUser}/>} 
+            currentUser={this.state.currentUser}
+            fetchAllUsers={this.fetchAllUsers}/>} 
             />
 
           <Route path="/new-event" render={routerProps => 
@@ -126,7 +133,8 @@ class App extends React.Component {
               <FriendList 
               {...routerProps} 
               currentUser={this.state.currentUser}
-              allUsers={this.state.allUsers}/> } 
+              allUsers={this.state.allUsers}
+              updateEvents={this.fetchEventsAndSetState}/> } 
               />
       </Switch>
       </div>

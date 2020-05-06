@@ -28,6 +28,7 @@ class Login extends React.Component {
         .then(user => {
             this.props.setCurrentUser(user)
             this.props.updateEvents()
+            this.props.fetchAllUsers()
             this.props.history.push("/")
         })
         .catch(() => alert("Login unsuccessful. Sign up or try again."))
