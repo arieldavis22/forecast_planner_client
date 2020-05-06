@@ -1,11 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { delEvent } from '../FetchData'
-<<<<<<< HEAD
-import { Card, Button, Image } from 'semantic-ui-react'
-=======
 import { Card, Button } from 'semantic-ui-react'
->>>>>>> 4e260be447f51f8c9d6a40ca33046588ec62e1cf
 
 
 
