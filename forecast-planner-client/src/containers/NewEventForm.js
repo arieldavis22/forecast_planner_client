@@ -36,7 +36,7 @@ class NewEventForm extends Component {
     }
     render() { 
         return (  
-            <>
+            <div className='pad'>
             { !this.props.currentUser ? <Redirect to="/" /> : null }
             <h1>Create New Event</h1>
             <form onSubmit={this.handleFormSubmit}>
@@ -57,7 +57,7 @@ class NewEventForm extends Component {
                 <br />
                 <input type="submit" value="Submit" />
             </form>
-            </>
+            </div>
         );
     }
 }

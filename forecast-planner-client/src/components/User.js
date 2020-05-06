@@ -6,7 +6,7 @@ const User = (props) => {
     return (  
         <Card>
             <Card.Header as='h3' textAlign="center">{friend}</Card.Header>
-            <Button className="dark-blue" floated='right' onClick={() => props.handleFriendClick(friend)}>Friend!</Button>
+            <Button className="dark-blue" floated='right' onClick={() => props.handleFriendClick(friend)}>Add</Button>
         </Card>
     );
 }
