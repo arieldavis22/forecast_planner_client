@@ -31,3 +31,14 @@ code {
   background-color: #264D59;
   color: white
 }
+
+div.ui.card.weather {
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1em
+}
+/*
+div.ui.card.sun {
+  background-image: url("sun.png");
+  background-repeat: no-repeat;
+} */

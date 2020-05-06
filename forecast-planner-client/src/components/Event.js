@@ -1,7 +1,9 @@
 import React from 'react';
+import rain from '../rain.jpg';
+import sun from '../sun.jpg';
 import { NavLink } from 'react-router-dom';
 import { delEvent } from '../FetchData'
-import { Card, Button, Image } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 
 
 
@@ -13,10 +15,11 @@ const Event = props => {
         .then(() => {
             props.update()
         })
-
     }
+
     return (  
-        <Card>
+        <Card className='weather'
+            style={ props.event.precipitation_chance > 50 ? {backgroundImage: `url(${rain})`} : {backgroundImage: `url(${sun})`} }>
             <Card.Description as='h2'>{props.event.title} </Card.Description>
             <Card.Meta>{props.event.details}</Card.Meta>
             <Card.Description as='h4'>
