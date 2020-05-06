@@ -61,7 +61,22 @@ div.ui.secondary.menu a.active.item {
 img.ui.image.logo {
   width: 306px;
   height: 54px;
-  margin: 8px 20px 8px 8px;
+  margin: 8px 50px 8px 8px;
 }
 
+a.ui.left.floated.button {
+  color: white;
+  background-color: #43978D;
+}
 
+a.ui.button.new-event {
+  width: 250px;
+  height: 300px;
+  color: white;
+  background-color: #43978D;
+  margin: 100px 20px 20px 20px;
+  text-align: center;
+  padding-top: 100px;
+  font-size: x-large;
+  
+}

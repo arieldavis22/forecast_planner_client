@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Event from './Event'
 import FriendEvent from './FriendEvent'
 import { NavLink } from 'react-router-dom';
-import { Card } from 'semantic-ui-react';
+import { Card, Button, Icon } from 'semantic-ui-react';
 
 class Home extends Component {
     
@@ -29,7 +29,18 @@ class Home extends Component {
             <div className='home'>
                 {this.props.currentUser ? 
                     <>
-                        <div className='side'><NavLink to="/new-event" exact>Create New Event</NavLink></div>
+                        <div className='side'>
+                            <Button as={NavLink}
+                                to="/new-event"
+                                exact
+                                className='new-event'>
+                                    <Icon name='add to calendar' 
+                                    size='large'/>
+                                    <br/><br/><br/>New Event
+                            </Button>
+                            {/* <NavLink to="/new-event" className='new-event' exact>Create New Event
+                            </NavLink> */}
+                        </div>
                         <div className='main-panel'>
                             <h1>Your Events</h1>
                             <Card.Group>{this.renderEvents()}</Card.Group>

@@ -17,9 +17,11 @@ const Event = props => {
         })
     }
 
+    const precip = props.event.precipitation_chance
+
     return (  
         <Card className='weather'
-            style={ props.event.precipitation_chance > 50 ? {backgroundImage: `url(${rain})`} : {backgroundImage: `url(${sun})`} }>
+            style={ precip > 50 ? {backgroundImage: `url(${rain})`} : {backgroundImage: `url(${sun})`} }>
             <Card.Description as='h2'>{props.event.title} </Card.Description>
             <Card.Meta>{props.event.details}</Card.Meta>
             <Card.Description as='h4'>
@@ -29,8 +31,8 @@ const Event = props => {
             <Card.Description>
                 {props.event.indoor ? "This is an indoor event" : "This is an outdoor event"}<br/>
                 <strong>Chance of precipitation: {props.event.precipitation_chance}%</strong><br/>
-                {!props.event.indoor && props.event.precipitation_chance > 30 ? <p style={{color: "red"}}>Rain may occur during your outdoor event</p> : null}
-                {props.event.precipitation_chance > 50 ? "Will probably rain" : "Will probably be sunny"}
+                {!props.event.indoor && precip > 30 ? <p style={{color: "red"}}>Rain may occur during your outdoor event</p> : null}
+                {precip > 50 ? "Will probably rain" : "Will probably be sunny"}
             </Card.Description>
                 <div >
                     <Button as={NavLink} to={`/edit/${props.event.id}`} floated='left'>Edit</Button>
