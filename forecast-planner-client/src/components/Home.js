@@ -50,7 +50,7 @@ class Home extends Component {
                         
                     </>
                 :
-                <div className='main-panel'>
+                <div className='main-panel pad'>
                     <h1>Welcome to Forecast Planner!</h1>
                     <h4>Log in or Sign up</h4>
                 </div>

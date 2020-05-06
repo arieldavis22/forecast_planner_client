@@ -58,12 +58,23 @@ class EditEventForm extends React.Component {
     return(
         <div className='pad'>
         { !this.props.currentUser ? <Redirect to="/" /> : null }
+        <h1>Edit</h1>
         <form onSubmit={this.handleSubmit}>
+            <label htmlFor="title">Event Title:  </label>
             <input type="text" name="title" onChange={this.handleInputChange} value={this.state.title} placeholder="Enter Event Title" />
+            <br/>
+            <label htmlFor="details">Event Details:  </label>
             <input type="textarea" name="details" onChange={this.handleInputChange} value={this.state.details} placeholder="Enter Event Details" />
-            <input type="text" name="location" onChange={this.handleInputChange} value={this.state.location} placeholder="City, State ex. Atlanta,GA" />
-            <input type="text" name="date" onChange={this.handleInputChange} value={this.state.date} placeholder="Enter Event Date ex. 05/01/2020" />
+            <br />
+            <label htmlFor="location">Location:  </label>
+            <input type="text" name="location" onChange={this.handleInputChange} value={this.state.location} placeholder="City,ST" />
+            <br />
+            <label htmlFor="date">Date Format:  </label>
+            <input type="text" name="date" onChange={this.handleInputChange} value={this.state.date} placeholder="YYYY-MM-DD" />
+            <br />
+            <label htmlFor="indoor">Is Event Indoor?:  </label>
             <input type="checkbox" name="indoor" onChange={this.handleCheckChange} value={this.state.indoor} />
+            <br />
             <input type="submit" value="Submit" />
         </form>
         </div>

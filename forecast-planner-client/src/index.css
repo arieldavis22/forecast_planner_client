@@ -30,6 +30,10 @@ div.pad {
 .main-panel {
   width: 70%;
 }
+h3.header {
+  margin: 10px;
+  text-align: center;
+}
 
 .ui.button.dark-blue {
   background-color: #264D59;
@@ -67,6 +71,11 @@ img.ui.image.logo {
 a.ui.left.floated.button {
   color: white;
   background-color: #43978D;
+  margin-top: 8px;
+}
+
+button.ui.red.mini.right.floated.button {
+  margin-top: 18px;
 }
 
 a.ui.button.new-event {

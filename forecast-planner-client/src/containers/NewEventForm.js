@@ -47,16 +47,16 @@ class NewEventForm extends Component {
             { !this.props.currentUser ? <Redirect to="/" /> : null }
             <h1>Create New Event</h1>
             <form onSubmit={this.handleFormSubmit}>
-                <label htmlFor="title">Enter Event Title:  </label>
+                <label htmlFor="title">Event Title:  </label>
                 <input type="text" name="title" onChange={this.handleInputChange} placeholder="Enter Event Title" />
                 <br />
-                <label htmlFor="details">Enter Event Details:  </label>
+                <label htmlFor="details">Event Details:  </label>
                 <input type="textarea" name="details" onChange={this.handleInputChange} placeholder="Enter Event Details" />
                 <br />
-                <label htmlFor="location">Enter Event Location:  </label>
+                <label htmlFor="location">Location:  </label>
                 <input type="text" name="location" onChange={this.handleInputChange} placeholder="City,ST" />
                 <br />
-                <label htmlFor="date">Enter Event Date Format:  </label>
+                <label htmlFor="date">Date Format:  </label>
                 <input type="text" name="date" onChange={this.handleInputChange} placeholder="YYYY-MM-DD" />
                 <br />
                 <label htmlFor="indoor">Is Event Indoor?:  </label>
